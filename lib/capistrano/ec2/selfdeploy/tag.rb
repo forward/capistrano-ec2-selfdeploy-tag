@@ -4,30 +4,21 @@ Capistrano::Configuration.instance(:must_exist).load do
     namespace :selfdeploy do
       namespace :tag do
         desc "Replace a specific Git tag with whatever just got deployed for use with EC2 self deploy."
-      
+
         task :update_tag do
           update_tag = fetch(:update_selfdeploy_tag) rescue true
           tag_name = fetch(:selfdeploy_tag) rescue "inproduction"
-        
-          puts "update_tag = #{update_tag}"
-          puts "tag_name = #{tag_name}"
-          puts "deploying from tag #{branch}"
-        
+
           if update_tag
             puts "Recreating Git selfdeploy tag '#{tag_name}'..."
+
             user = `git config --get user.name`
             email = `git config --get user.email`
-
-            puts "Would update tag:"
-            puts "update_tag = #{update_tag}"
-            puts "tag_name = #{tag_name}"
-            exit 1
 
             puts `git tag -d #{tag_name}`
             puts `git push origin :#{tag_name}`
             puts `git tag #{tag_name} #{revision} -m "Selfdeploy tag recreated by #{user} <#{email}>"`
             puts `git push --tags`
-        
           else
             puts "This is a self deployment task - not recreating selfdeploy tag..."
             exit 1
