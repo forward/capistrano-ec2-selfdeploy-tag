@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "capistrano-ec2-selfdeploy-tag"
 
-  s.files = ["lib/capistrano/ec2/selfdeploy/production_tag.rb"]
+  s.files = ["lib/capistrano/ec2/selfdeploy/tag.rb"]
   s.require_paths = ["lib"]
   
   s.add_dependency("capistrano", [">= 1.0.0"])
