@@ -13,9 +13,15 @@ In your deploy.rb:
 
     require 'capistrano/ec2/selfdeploy/tag'
 
-Now when you run a standard cap deploy, upon success you will see output similar to this:
+Now when you run a standard 'cap deploy', upon success you will see the following line in your output:
 
     Recreating Git selfdeploy tag 'inproduction'...
+    
+When autoscaling a new EC2 instance and performing a self deploy, make sure you call 'cap ec2_instance deploy'. You will then see the following output instead:
+
+    This is a self deployment task - not recreating selfdeploy tag...
+    
+The 'ec2_instance deploy' prevents the selfdeploy_tag from being updated, and ensures the deployment branch is set to the selfdeploy_tag.
 
 Overriding Defaults
 ====================================================
