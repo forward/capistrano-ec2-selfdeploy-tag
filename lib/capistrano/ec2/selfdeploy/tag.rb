@@ -21,7 +21,6 @@ Capistrano::Configuration.instance(:must_exist).load do
             puts `git push --tags`
           else
             puts "This is a self deployment task - not recreating selfdeploy tag..."
-            exit 1
           end
         end
       end
