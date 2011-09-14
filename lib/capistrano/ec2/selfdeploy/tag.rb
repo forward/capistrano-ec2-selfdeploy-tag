@@ -29,6 +29,11 @@ Capistrano::Configuration.instance(:must_exist).load do
   
   namespace :deploy do
     after "deploy", "ec2:selfdeploy:tag:update_tag"
+    
+    desc "What to do the first time the app is deployed"
+    task :first_time do
+    end
+    
   end
   
   task :ec2_instance do
