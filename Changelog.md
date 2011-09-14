@@ -1,3 +1,7 @@
+## 1.0.2 (September 14, 2011)
+
+  - Added a dummy 'deploy:first_time' task. Override this task in your project if there are commands that need to be run the first time a project deploys, but not during each subsequent deploy.
+
 ## 1.0.1 (September 13, 2011)
 
 Bugfixes:
