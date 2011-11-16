@@ -1,3 +1,9 @@
+## 1.0.3 (November 16, 2011)
+
+Bugfix:
+
+  - Suddenly started failing on a subset of servers, related to not requiring rubygems or capistrano.
+
 ## 1.0.2 (September 14, 2011)
 
   - Added a dummy 'deploy:first_time' task. Override this task in your project if there are commands that need to be run the first time a project deploys, but not during each subsequent deploy.
